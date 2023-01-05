@@ -27,9 +27,6 @@ class Solution {
             }
             ListNode pointer = result;
             while (pointer.next != null && tmp != null){
-                System.out.print(pointer.next.val);
-                System.out.print("   ");
-                System.out.println(tmp.val);
                 if (pointer.next.val > tmp.val){
                     ListNode temp = tmp;
                     tmp = pointer.next;
