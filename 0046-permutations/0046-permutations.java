@@ -7,7 +7,6 @@ class Solution {
         for (int i = 0; i < used.length; i++) {
             tmp_result[used[i]] = nums_pub[i];
         }
-        System.out.println(Arrays.toString(tmp_result));
         result.add(Arrays.stream(tmp_result).boxed().toList());
     }
     public static void recursiveProduct(int n){  // рекурсивная функция нахождения декартого произведения
