@@ -1,18 +1,15 @@
 class Solution {
     public int[] plusOne(int[] digits) {
-        for (int i = digits.length - 1; i >= 0; i--) {
-            if (digits[i] != 9) {
+        for (int i = digits.length - 1; i >= 0; i--) { // если к 9 прибавить 1 тоона привратится в 0 а 1 уйдет на следующий порядок 29 + 1 = 2_9 + 0_1 = (2 + 1)_0 = 30
+            if (digits[i] != 9) {                       // если текущая цифра не 9 то просто увеличиваем его на 1
                 digits[i]++;
-                return digits;
+                return digits;                          // и возвращаем результат
             }
-            digits[i] = 0;
+            digits[i] = 0;                                 // если 9 то зануляем и переносим 1 на следующий порядок
         }
-        int[] tm = digits;
-        digits = new int[digits.length + 1];
-        for (int i = 0; i < tm.length; i++) {
-            digits[i + 1] = tm[i];
-        }
-        digits[0] = 1;
+        // если мы оказались тут то масив состоял тоько из 9 и мы его уже превратили в масив нулей.
+        digits = new int[digits.length + 1];           //осталось тольско добавить 1 в начале
+        digits[0] = 1;                                 // добовляем 1
         return digits;
     }
 }
