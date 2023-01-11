@@ -11,21 +11,21 @@ class Solution {
                 double tm_result;
                 System.out.println(n);
                 if (!neg) {
-                        tm_result = x;
-                    }else{
-                        tm_result = 1.0/x;
-                    }
-                counter++;
+                    tm_result = x;
+                }else{
+                    tm_result = 1.0/x;
+                }
                 if ((n & 1) == 0){
                     n = n>>>1;
+                    counter++;
                     continue;
                 }else{
                     n = n>>>1;
                 }
-                for (int i = 0; i < counter - 1; i++) {
+                for (int i = 0; i < counter; i++) {
                     tm_result *= tm_result;
                 }
-                System.out.println(tm_result);
+                counter++;
                 result *= tm_result;
             }
             return result;
