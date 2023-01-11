@@ -6,27 +6,19 @@ class Solution {
                 n = -n;
             }
             double result = 1.0;
-            int counter = 0;
+            if (neg) {
+                x = 1.0/x;
+            }
             while (n != 0){
-                double tm_result;
-                System.out.println(n);
-                if (!neg) {
-                    tm_result = x;
-                }else{
-                    tm_result = 1.0/x;
-                }
                 if ((n & 1) == 0){
                     n = n>>>1;
-                    counter++;
+                    x *= x;
                     continue;
                 }else{
                     n = n>>>1;
                 }
-                for (int i = 0; i < counter; i++) {
-                    tm_result *= tm_result;
-                }
-                counter++;
-                result *= tm_result;
+                result *= x;
+                x *= x;
             }
             return result;
         }
