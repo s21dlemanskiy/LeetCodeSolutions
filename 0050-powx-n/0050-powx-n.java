@@ -1,24 +1,20 @@
 class Solution {
-        public double myPow(double x, int n) {
-            boolean neg = false;
-            if (n < 0){
+        public double myPow(double x, int n) { // решение строится на том что бы представить результат в виде x^(2^m) * 2^(2^(m-1)).... = x ^ (2^m + 2^(m-1)...) = 2^n
+            boolean neg = false; // для начала зпомним если степень отрицательна тк дальше будем работать с положительной(это из за битового сдвига тк -1 >> 1 != 0)
+            if (n < 0){      
                 neg = true;
                 n = -n;
             }
-            double result = 1.0;
-            if (neg) {
-                x = 1.0/x;
+            double result = 1.0; 
+            while (n != 0){             
+                if ((n & 1) == 1){   // если млачший бит равен 1 (те n % 2 == 1) то умнажаем результат на x
+                    result *= x;
+                }            
+                n = n>>>1;       // сдвигаем n на один бит (равносильно n / 2)
+                x *= x;          // и возводим x в квадрат
             }
-            while (n != 0){
-                if ((n & 1) == 0){
-                    n = n>>>1;
-                    x *= x;
-                    continue;
-                }else{
-                    n = n>>>1;
-                }
-                result *= x;
-                x *= x;
+            if (neg){           // если n был меньше нуля переворачиваем дробь
+                result = 1.0 / result;
             }
             return result;
         }
