@@ -12,12 +12,11 @@ class Solution {
             }
             if (nums[i] == val){
                 nums[i] = nums[index];
-                nums[index] = val;
                 index -= 1;
             }
             i += 1;
         }
-        if (nums[i] == val){
+        if (nums[i] == val || index < i){
             return i;
         }else{
             return i + 1;
